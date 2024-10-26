@@ -19,7 +19,7 @@ mongoose
   .then(() => console.log("mongoDb connected"))
   .catch((err) => console.log(err));
 
-app.use("/home", (req,res)=>{
+app.use("/", (req,res)=>{
     res.send("<h1>Hello from Vista</h1>")
 });
 
