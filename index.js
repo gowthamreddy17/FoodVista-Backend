@@ -6,21 +6,23 @@ import vendorRoutes from "./routes/vendorRoutes.js";
 import firmRoutes from "./routes/firmRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import path from "path";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
 
 dotEnv.config();
-// app.use(express.json());
+app.use(express.json());
 app.use(bodyParser.json());
+app.use(cors());
 
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("mongoDb connected"))
   .catch((err) => console.log(err));
 
-app.use("/", (req,res)=>{
-    res.send("<h1>Hello from Vista</h1>")
+app.get("/", (req, res) => {
+  res.send("<h1>Hello from Vista</h1>");
 });
 
 //middlewares
